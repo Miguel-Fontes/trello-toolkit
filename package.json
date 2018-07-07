@@ -21,6 +21,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
+    "semver": "^5.5.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   }

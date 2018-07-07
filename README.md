@@ -1,6 +1,6 @@
 # Trello Toolkit
 
-Treelo Toolkit is a chrome extension that adds helpful information the Trello board view.
+Treelo Toolkit is a chrome extension that adds helpful information on Trello board view.
 
 ## Motivation
 
@@ -10,7 +10,7 @@ I am a big Trello user and fan, using it for things ranging from Work to Taking 
 
 So, you want to install this tool on your browser? Nice!
 
-1. Download the most recent release (https://github.com/Miguel-Fontes/trello-toolkit/releases/download/v1.0.0/trello-toolkit.tar.gz);
+1. Download the [most recent release](https://github.com/Miguel-Fontes/trello-toolkit/releases/download/v1.0.0/trello-toolkit.tar.gz);
 2. Unpack it on your favorite directory;
 3. Access `chrome://extensions/` on your Chrome Browser;
 4. Drag and drop the `trello-toolkit.crx` file on chrome extension window;

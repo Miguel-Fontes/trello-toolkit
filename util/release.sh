@@ -81,7 +81,7 @@ npmRelease () {
     npm version $RELEASE_TYPE
 }
 
-npmRelease () {
+npmBuild () {
     npm run build
 }
 

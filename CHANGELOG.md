@@ -8,12 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - [Changelog](#changelog)
     - [[Unreleased]](#unreleased)
+    - [[v1.0.0] - 2018-07-07](#v100---2018-07-07)
         - [Added](#added)
 
 <!-- /TOC -->
 
 ## [Unreleased]
 
+## [v1.0.0] - 2018-07-07
+
 ### Added
 
--  Added Card Counter feature, showing the number of cards on each Trello List Header.
+- Added Card Counter feature, showing the number of cards on each Trello List Header.

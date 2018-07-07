@@ -53,6 +53,7 @@ getNextVersion() {
 
 bumpManifestVersion () {
     sed -i -- "s/$CURRENT_VERSION/$NEXT_VERSION/g" src/manifest.json
+    git commit "Bump manifest version to $NEXT_VERSION"
 }
 
 validate() {

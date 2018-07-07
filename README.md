@@ -41,7 +41,7 @@ The build process is handled by Webpack, accessible through npm:
 npm run build
 ```
 
-And that's it! The built files will be created at `{project-root}/dist`.
+And that's it! The built files will be placed at `{project-root}/dist`.
 
 ### Sugestions or Problems
 

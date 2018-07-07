@@ -1,6 +1,6 @@
 import iterable from "../util/iterable";
 
-export default function cardCounter() {
+export default (function cardCounter() {
 
     var that = {}
 
@@ -47,4 +47,4 @@ export default function cardCounter() {
     }
 
     return that;
-}
+})()

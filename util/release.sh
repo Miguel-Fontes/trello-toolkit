@@ -13,6 +13,7 @@
 # Depends On:
 #   - npm
 #   - semver
+#   - git
 #
 # Future Features
 #   - Validate if version is bigger than current one

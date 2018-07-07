@@ -1,0 +1,24 @@
+{
+  "name": "trello-toolkit",
+  "version": "1.0.0",
+  "description": "A chrome extension adding some much needed features to support card management features on trello",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": " node ./node_modules/webpack/bin/webpack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miguel-Fontes/trello-toolkit.git"
+  },
+  "author": "Miguel Fontes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Miguel-Fontes/trello-toolkit/issues"
+  },
+  "homepage": "https://github.com/Miguel-Fontes/trello-toolkit#readme",
+  "devDependencies": {
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  }
+}

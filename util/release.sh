@@ -81,6 +81,14 @@ npmRelease () {
     npm version $RELEASE_TYPE
 }
 
+npmRelease () {
+    npm run build
+}
+
+packageVersion() {
+    
+}
+
 main () {
     echo "Trello Toolkit Release Script"
     echo "Current working directory is $(pwd)"
@@ -91,6 +99,7 @@ main () {
 
     bumpManifestVersion
     npmRelease
+    npmBuild
 }
 
 main

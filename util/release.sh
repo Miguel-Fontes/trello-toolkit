@@ -85,10 +85,6 @@ npmRelease () {
     npm run build
 }
 
-packageVersion() {
-    
-}
-
 main () {
     echo "Trello Toolkit Release Script"
     echo "Current working directory is $(pwd)"

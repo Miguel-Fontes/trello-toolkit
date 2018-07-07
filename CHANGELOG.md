@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+## [v1.0.1] - 2018-07-07
+
+### Added
+
+- Release script, making it way easier to release a new version (check README for info).
+
+## Fixed
+
+- Manifest version number was set to 0.1.0, corrected to 1.1.0.
+
 ## [v1.0.0] - 2018-07-07
 
 ### Added

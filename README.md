@@ -27,7 +27,7 @@ First things first. Aren't you tired of turning filter up just to check the numb
 
 ## Contributing
 
-### Developers
+### With code
 
 Fork this project and clone it on your station. Set everything up with:
 
@@ -43,6 +43,6 @@ npm run build
 
 And that's it! The built files will be placed at `{project-root}/dist`.
 
-### Sugestions or Problems
+### With sugestions or reporting problems
 
 Go to [issues](https://github.com/Miguel-Fontes/trello-toolkit/issues) and get in touch!

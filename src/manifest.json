@@ -1,7 +1,7 @@
 {
     "name": "Trello Toolkit",
     "version": "1.0.1",
-    "description": "Adds some much needed management features on Trello",
+    "description": "Adds some little features to Trello, making your life way easier!",
     "manifest_version": 2,
     "permissions": ["declarativeContent"],
     "content_scripts": [

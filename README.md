@@ -29,15 +29,26 @@ First things first. Aren't you tired of turning filter up just to check the numb
 
 ### With code
 
+#### Setup your environment
+
 Fork this project and clone it on your station. Set everything up with:
 
 ``` shell
 npm install
 ```
 
-The build process is handled by Webpack, accessible through npm:
+#### Test it!
+
+Jasmine is the tool of choice. Spin up the tests using the command `npm test`. You can find the test code at `spec`, along with the Jasmine configuration file.
+
+For adding new tests, just create a new file on `spec` directory, with a name obeying the pattern `"**/*[sS]pec.js"` and you're good to go!
+
+#### Build it!
+
+The build process is handled by Webpack, accessible through npm. Use the following commands for a development or production build, respectively.
 
 ``` shell
+npm run build-dev
 npm run build
 ```
 

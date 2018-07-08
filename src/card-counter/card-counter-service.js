@@ -1,6 +1,6 @@
-import iterable from "../util/iterable";
+const iterable = require("../util/iterable").default;
 
-export default (function cardCounter() {
+let counter = (function (spec, my) {
 
     var that = {}
 
@@ -21,14 +21,14 @@ export default (function cardCounter() {
     }
 
     function getListHeader(list) {
-        return iterable(list.children)
+        return iterable({ collection: list.children })
             .find(children => {
                 return children.attributes.class.value.includes(HEADER_CLASS);
             })
     }
 
     function getCardsList(list) {
-        return iterable(list.children)
+        return iterable({ collection: list.children })
             .find(children => {
                 return (children.attributes.class.value.includes(CARD_LIST_CLASS))
             })
@@ -39,7 +39,7 @@ export default (function cardCounter() {
     }
 
     function setListsCounters() {
-        iterable(getLists())
+        iterable({ collection: getLists() })
             .forEach(item => {
                 let size = getCardListSize(item);
                 setListCardNumber(item, size)
@@ -48,3 +48,7 @@ export default (function cardCounter() {
 
     return that;
 })()
+
+module.exports = {
+    default: counter
+}

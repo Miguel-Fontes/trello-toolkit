@@ -1,8 +1,8 @@
-export default function iterable(domCollection) {
+let Iterable = function (spec, my) {
     let that = {}
-    let my = {}
+    my = my || {}
 
-    my.collection = domCollection;
+    my.collection = spec.collection;
 
     // forEach :: (a -> _) -> ()
     that.forEach = function (f) {
@@ -34,3 +34,7 @@ export default function iterable(domCollection) {
 
     return that;
 }
+
+module.exports = {
+    default: Iterable
+};

@@ -1,3 +1,3 @@
-import counter from "./card-counter/card-counter-service";
+const Counter = require('./card-counter/card-counter-service').default;
 
-counter.count();
+Counter.count();

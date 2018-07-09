@@ -4,9 +4,10 @@ const List = (spec, my) => {
     let that = {};
     my = my || {}
 
-    init()
+    init();
 
     that.getCardsCount = getCardsCount;
+    that.getName = getName;
 
     function init() {
         if (spec.name == undefined) throw new Error("List name not informed!")
@@ -19,9 +20,13 @@ const List = (spec, my) => {
         return my.cards.length;
     }
 
+    function getName() {
+        return my.name;
+    }
+
     return Object.freeze(that);
 }
 
 module.exports = {
-    default: List
+    builder: List
 };

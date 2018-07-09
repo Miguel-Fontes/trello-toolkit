@@ -1,4 +1,4 @@
-const List = require('../../../src/core/board/list.js').default;
+const List = require('../../../src/core/board/list.js').builder;
 
 describe("List invalid construction", () => {
   it("should throw list name not informed error", () => {
@@ -15,5 +15,9 @@ describe("List valid construction", () => {
 
   it("should return the cards count", () => {
     expect(List(mockListParams).getCardsCount()).toBe(mockListParams.cards.length);
+  })
+
+  it("should a list name", () => {
+    expect(List(mockListParams).getName()).toBe(mockListParams.name);
   })
 })

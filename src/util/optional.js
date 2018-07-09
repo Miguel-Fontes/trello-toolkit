@@ -26,7 +26,7 @@ const Optional = (spec, my) => {
             : of(nullable);
     }
 
-    return Object.freeze(that);;
+    return Object.freeze(that);
 };
 
 function Container(spec, my) {

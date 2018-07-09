@@ -19,7 +19,7 @@ const List = (spec, my) => {
         return my.cards.length;
     }
 
-    return Object.freeze(that);;
+    return Object.freeze(that);
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const List = require('../../src/board/list.js').default;
+const List = require('../../../src/core/board/list.js').default;
 
 describe("List invalid construction", () => {
   it("should throw list name not informed error", () => {

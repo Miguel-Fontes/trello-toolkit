@@ -1,4 +1,4 @@
-const iterable = require('../util/iterable').default;
+const iterable = require('../../util/iterable').default;
 
 const List = (spec, my) => {
     let that = {};

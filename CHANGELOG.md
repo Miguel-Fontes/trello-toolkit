@@ -6,10 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+### Added
+
+- Automatically updates the counter when cards are added/removed from lists
+
 ### Changed
 
-- Access reduced to only to Trello Board Pages
-- Extension description
+- Required access reduced to only to Trello Board Pages
+- Better description for te extension
 
 ### Fixed
 

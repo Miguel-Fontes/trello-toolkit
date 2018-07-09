@@ -1,6 +1,6 @@
 const iterable = require("../util/iterable").default;
 
-let counter = (function (spec, my) {
+const counter = (function (spec, my) {
 
     var that = {}
 

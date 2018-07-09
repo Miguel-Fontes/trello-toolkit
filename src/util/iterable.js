@@ -1,4 +1,4 @@
-let Iterable = (spec, my) => {
+const Iterable = (spec, my) => {
     let that = {}
     my = my || {}
 

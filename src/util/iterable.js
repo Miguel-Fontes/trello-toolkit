@@ -17,7 +17,7 @@ const Iterable = (spec, my) => {
             my.collection[i] = f(my.collection[i]);
         })
 
-        return that;
+        return Object.freeze(that);;
     }
 
     that.find = function (predicate) {
@@ -38,7 +38,7 @@ const Iterable = (spec, my) => {
         return my.collection;
     }
 
-    return that;
+    return Object.freeze(that);;
 }
 
 module.exports = {

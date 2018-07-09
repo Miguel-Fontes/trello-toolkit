@@ -1,6 +1,6 @@
 const objects = require('./objects.js');
 
-let Optional = (spec, my) => {
+const Optional = (spec, my) => {
     let that = {};
     my = my || {};
     spec = spec || {};
@@ -26,7 +26,7 @@ let Optional = (spec, my) => {
             : of(nullable);
     }
 
-    return that;
+    return Object.freeze(that);;
 };
 
 function Container(spec, my) {
@@ -55,7 +55,7 @@ function Container(spec, my) {
             : my.of;
     }
 
-    return that;
+    return Object.freeze(that);
 }
 
 module.exports = {

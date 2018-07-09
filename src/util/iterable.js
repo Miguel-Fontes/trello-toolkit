@@ -1,4 +1,4 @@
-let Iterable = function (spec, my) {
+let Iterable = (spec, my) => {
     let that = {}
     my = my || {}
 
@@ -6,16 +6,16 @@ let Iterable = function (spec, my) {
 
     // forEach :: (a -> _) -> ()
     that.forEach = function (f) {
-        for (let i = 0; i < my.collection.length; i++) {
+        iterate(i => {
             f(my.collection[i]);
-        }
+        })
     }
 
     // map :: (a -> b) -> DomList [a] -> DomList [b]
     that.map = function (f) {
-        for (let i = 0; i < my.collection.length; i++) {
+        iterate(i => {
             my.collection[i] = f(my.collection[i]);
-        }
+        })
 
         return that;
     }
@@ -24,6 +24,12 @@ let Iterable = function (spec, my) {
         for (let i = 0; i < my.collection.length; i++) {
             if (predicate(my.collection[i]))
                 return my.collection[i];
+        }
+    }
+
+    function iterate(f) {
+        for (let i = 0; i < my.collection.length; i++) {
+            f(i);
         }
     }
 

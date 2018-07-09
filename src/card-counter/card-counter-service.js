@@ -1,12 +1,12 @@
 const iterable = require("../util/iterable").default;
 
-const counter = (function (spec, my) {
+const Counter = function (spec, my) {
 
     var that = {}
 
-    const HEADER_CLASS = "list-header";
-    const LIST_CLASS = "list"
-    const CARD_LIST_CLASS = "list-cards"
+    const LIST_CLASS =      spec.constants.list.LIST_CLASS;
+    const HEADER_CLASS =    spec.constants.list.HEADER_CLASS;
+    const CARD_LIST_CLASS = spec.constants.list.card.CARD_LIST_CLASS;
 
     that.count = setListsCounters;
 
@@ -47,8 +47,8 @@ const counter = (function (spec, my) {
     }
 
     return that;
-})()
+}
 
 module.exports = {
-    default: counter
+    Build: Counter
 }

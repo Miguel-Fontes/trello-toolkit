@@ -10,8 +10,27 @@ const Counter = function (spec, my) {
 
     that.count = setListsCounters;
 
+    function setListsCounters() {
+        iterable({ collection: getLists() })
+            .forEach(list => {
+                let numberOfCards = getCardListSize(list);
+                setListCardNumber(list, numberOfCards)
+            })
+    }
+
     function getLists() {
         return document.getElementsByClassName(LIST_CLASS)
+    }
+
+    function getCardListSize(list) {
+        return getCardsList(list).childElementCount;
+    }
+
+    function getCardsList(list) {
+        return iterable({ collection: list.children })
+            .find(children => {
+                return (children.attributes.class.value.includes(CARD_LIST_CLASS))
+            })
     }
 
     function setListCardNumber(list, counter) {
@@ -22,29 +41,13 @@ const Counter = function (spec, my) {
 
     function getListHeader(list) {
         return iterable({ collection: list.children })
-            .findFirst(children => {
+            .find(children => {
                 return children.attributes.class.value.includes(HEADER_CLASS);
             })
     }
 
-    function getCardsList(list) {
-        return iterable({ collection: list.children })
-            .findFirst(children => {
-                return (children.attributes.class.value.includes(CARD_LIST_CLASS))
-            })
-    }
 
-    function getCardListSize(list) {
-        return getCardsList(list).childElementCount;
-    }
 
-    function setListsCounters() {
-        iterable({ collection: getLists() })
-            .forEach(list => {
-                let numberOfCards = getCardListSize(list);
-                setListCardNumber(list, numberOfCards)
-            })
-    }
 
     return that;
 }

@@ -1,10 +1,13 @@
-const Lists = (spec, my) =>  {
+const iterable = require('../../util/iterable.js').default
+const List = require('./list').builder
+
+const Lists = (spec, my) => {
     let that = {}, references = {};
     my = my || {};
 
     init();
 
-    that.getLists = () => references.lists;
+    that.getLists = () => references.components.lists;
 
     function init() {
         setDocument();
@@ -23,12 +26,18 @@ const Lists = (spec, my) =>  {
     }
 
     function setReferences() {
-        references = {
+        references.components = {
             lists: bindListsReference(),
         }
     }
 
     function bindListsReference() {
+        return iterable({ collection: getListsCollection() })
+            .map(list => { return List({ list: list }, my) })
+            .get();
+    }
+
+    function getListsCollection() {
         return my.document.getElementsByClassName(my.constants.list.LIST_CLASS)
     }
 

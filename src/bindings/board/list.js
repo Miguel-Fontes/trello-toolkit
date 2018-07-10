@@ -1,10 +1,15 @@
-const iterable = require('../util/iterable.js')
+const iterable = require('../../util/iterable').default
 
 const List = (spec, my) => {
     let that = {}, references = {};
     my = my || {};
 
     init()
+
+    that.getHeader = () => references.components.header;
+    that.getCards = () => references.components.cards;
+    that.getCounter = () => references.components.counter;
+    that.getNumberOfCards = () => references.components.cards.childElementCount;
 
     function init() {
         setDocument();
@@ -25,12 +30,13 @@ const List = (spec, my) => {
     function setReferences() {
         if (spec.list == undefined) throw new Error("List not supplied!")
 
-        references = {
-            list: spec.list,
-            name: bindListNameReference(),
-            header: bindHeaderReference(),
-            cards: bindCardsReference()
-        }
+        references.list = spec.list;
+        references.components = {};
+        references.components.name = bindListNameReference();
+        references.components.header = bindHeaderReference();
+        references.components.cards = bindCardsReference();
+        references.components.counter = bindCardCounterReference();
+
     }
 
     function bindHeaderReference() {
@@ -44,6 +50,16 @@ const List = (spec, my) => {
     function bindCardsReference() {
         return references.list.querySelector('.js-list-cards');
     }
+
+    function bindCardCounterReference() {
+        let numberOfCards = references.components.cards.childElementCount;
+        let counterNode = my.document.createElement("p");
+        counterNode.appendChild(my.document.createTextNode(numberOfCards));
+        references.components.header.appendChild(counterNode);
+
+        return counterNode;
+    }
+
 
     return that;
 }

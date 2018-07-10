@@ -1,41 +1,46 @@
 const Iterable = (spec, my) => {
-    let that = {}
+    let that = {}, collection;
     my = my || {}
 
-    my.collection = spec.collection;
+    init();
+
+    function init() {
+        collection = spec.collection || [];
+    }
 
     // forEach :: (a -> _) -> ()
     that.forEach = function (f) {
         iterate(i => {
-            f(my.collection[i]);
+            f(collection[i]);
         })
     }
 
-    // map :: (a -> b) -> DomList [a] -> DomList [b]
+    // map :: (a -> b) -> [a] -> [b]
     that.map = function (f) {
+        let mappedData = [];
+
         iterate(i => {
-            my.collection[i] = f(my.collection[i]);
+            mappedData.push(f(collection[i]));
         })
 
-        return Object.freeze(that);
+        return Iterable({collection: mappedData});
     }
 
     that.find = function (predicate) {
-        for (let i = 0; i < my.collection.length; i++) {
-            if (predicate(my.collection[i]))
-                return my.collection[i];
+        for (let i = 0; i < collection.length; i++) {
+            if (predicate(collection[i]))
+                return collection[i];
         }
     }
 
     function iterate(f) {
-        for (let i = 0; i < my.collection.length; i++) {
+        for (let i = 0; i < collection.length; i++) {
             f(i);
         }
     }
 
-    // get :: DomCollection
     that.get = function () {
-        return my.collection;
+        return collection;
     }
 
     return Object.freeze(that);

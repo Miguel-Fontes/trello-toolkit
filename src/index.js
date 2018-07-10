@@ -1,4 +1,11 @@
 const constants = require('./config/constants').default;
-const Counter = require('./card-counter/card-counter-service').Build({ constants: constants });
+const Lists = require('./dom/board/lists').builder;
 
-Counter.count();
+let config = {
+    constants: constants,
+    document: document
+};
+
+let dom = {
+    lists: Lists(config)
+}

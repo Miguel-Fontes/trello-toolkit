@@ -1,8 +1,10 @@
-const CardDom = (spec, my) => {
+const Card = (spec, my) => {
     let that = {}, references = {};
     my = my || {};
 
     init()
+
+    that.getTitle = () => references.title;
 
     function init() {
         setDocument();
@@ -29,4 +31,8 @@ const CardDom = (spec, my) => {
     }
 
     return that;
+}
+
+module.exports = {
+    builder: Card
 }

@@ -1,4 +1,4 @@
-const ListsDom = (spec, my) =>  {
+const Lists = (spec, my) =>  {
     let that = {}, references = {};
     my = my || {};
 
@@ -37,5 +37,5 @@ const ListsDom = (spec, my) =>  {
 }
 
 module.exports = {
-    builder: ListsDom
+    builder: Lists
 }

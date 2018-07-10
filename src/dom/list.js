@@ -1,6 +1,6 @@
 const iterable = require('../util/iterable.js')
 
-const ListDom = (spec, my) => {
+const List = (spec, my) => {
     let that = {}, references = {};
     my = my || {};
 
@@ -49,5 +49,5 @@ const ListDom = (spec, my) => {
 }
 
 module.exports = {
-    builder: ListDom
+    builder: List
 }

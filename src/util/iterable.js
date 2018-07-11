@@ -1,3 +1,5 @@
+const optional = require('./optional').default;
+
 const Iterable = (spec, my) => {
     let that = {}, collection;
     my = my || {}
@@ -44,14 +46,20 @@ const Iterable = (spec, my) => {
         }
     }
 
+    that.collect = function () {
+        return collection;
+    }
+
+    that.findFirst = () => {
+        return collection.length > 0
+            ? optional.of(collection[0])
+            : optional.empty();
+    }
+
     function iterate(f) {
         for (let i = 0; i < collection.length; i++) {
             f(i);
         }
-    }
-
-    that.collect = function () {
-        return collection;
     }
 
     return Object.freeze(that);

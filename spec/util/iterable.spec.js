@@ -20,10 +20,18 @@ describe("Iterable with content", () => {
     })
 
     it("should find a value", () => {
-        let result = iterable({collection: mockData})
+        let result = iterable({ collection: mockData })
             .find(x => x == 2)
 
         expect(result).toEqual(2);
+    })
+
+    it("should find first value", () => {
+        let result = iterable({ collection: mockData })
+            .findFirst();
+
+        expect(result.isEmpty()).toBeFalsy();
+        expect(result.orElse(null)).toEqual(1);
     })
 
 })

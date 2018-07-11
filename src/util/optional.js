@@ -35,12 +35,18 @@ function Container(spec, my) {
 
     my.of = spec.of || undefined;
 
-    that.isEmpty = isEmpty
-    that.map = map
+    that.isEmpty = isEmpty;
+    that.map = map;
     that.orElse = orElse;
+    that.isPresent = isPresent;
+    that.ifPresent = ifPresent;
 
     function isEmpty() {
         return objects.isNullObject(my.of)
+    }
+
+    function isPresent() {
+        return !isEmpty();
     }
 
     function map(f) {
@@ -53,6 +59,10 @@ function Container(spec, my) {
         return isEmpty()
             ? f()
             : my.of;
+    }
+
+    function ifPresent(f) {
+        if (isPresent()) f(my.of)
     }
 
     return Object.freeze(that);

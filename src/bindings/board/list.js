@@ -67,25 +67,28 @@ const List = (spec, my) => {
         return counterNode;
     }
 
-    function updateCounterValue() {
-        references.components.counter.innerHTML = that.getNumberOfCards();
+    function dataBindMutations() {
+        subscribeCardListObserver();
     }
 
-    function dataBindMutations() {
+    function subscribeCardListObserver() {
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 iterable({ collection: mutation.addedNodes })
                     .filter(node => isACard(node))
                     .findFirst()
                     .ifPresent(node => updateCounterValue());
-            })
+            });
         });
-
         observer.observe(references.components.cards, { childList: true });
     }
 
     function isACard(node) {
         return node.attributes['class'].nodeValue.includes('list-card');
+    }
+
+    function updateCounterValue() {
+        references.components.counter.innerHTML = that.getNumberOfCards();
     }
 
     return Object.freeze(that);

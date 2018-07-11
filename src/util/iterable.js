@@ -9,24 +9,35 @@ const Iterable = (spec, my) => {
     }
 
     // forEach :: (a -> _) -> ()
-    that.forEach = function (f) {
+    that.forEach = f => {
         iterate(i => {
             f(collection[i]);
         })
     }
 
     // map :: (a -> b) -> [a] -> [b]
-    that.map = function (f) {
+    that.map = f => {
         let mappedData = [];
 
         iterate(i => {
             mappedData.push(f(collection[i]));
         })
 
-        return Iterable({collection: mappedData});
+        return Iterable({ collection: mappedData });
     }
 
-    that.find = function (predicate) {
+    that.filter = predicate => {
+        let filteredData = [];
+
+        iterate(i => {
+            if (predicate(collection[i]))
+                filteredData.push(collection[i])
+        })
+
+        return Iterable({ collection: filteredData });
+    }
+
+    that.find = predicate => {
         for (let i = 0; i < collection.length; i++) {
             if (predicate(collection[i]))
                 return collection[i];
@@ -39,7 +50,7 @@ const Iterable = (spec, my) => {
         }
     }
 
-    that.get = function () {
+    that.collect = function () {
         return collection;
     }
 

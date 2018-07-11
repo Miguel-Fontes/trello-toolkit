@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+## [v1.1.0] - 2018-07-10
+
 ### Added
 
 - Automatically updates the counter when cards are added/removed from lists

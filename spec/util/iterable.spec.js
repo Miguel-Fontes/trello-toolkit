@@ -34,4 +34,12 @@ describe("Iterable with content", () => {
         expect(result.orElse(null)).toEqual(1);
     })
 
+    it("for each should iterate each value", () => {
+        let values = [];
+        iterable({ collection: mockData })
+            .forEach(x => values.push(x));
+
+        expect(values).toEqual(mockData);
+    })
+
 })

@@ -30,7 +30,7 @@ const Card = (spec, my) => {
         };
     }
 
-    return that;
+    return Object.freeze(that);
 }
 
 module.exports = {

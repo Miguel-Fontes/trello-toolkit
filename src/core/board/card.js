@@ -16,7 +16,7 @@ const Card = (spec, my) => {
         return my.title;
     }
 
-    return that;
+    return Object.freeze(that);
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const iterable = require('../../util/iterable.js').default
+const iterable = require('../../util/iterable').default
 const List = require('./list').builder
 
 const Lists = (spec, my) => {
@@ -41,8 +41,7 @@ const Lists = (spec, my) => {
         return my.document.getElementsByClassName(my.constants.list.LIST_CLASS)
     }
 
-    return that;
-
+    return Object.freeze(that);
 }
 
 module.exports = {

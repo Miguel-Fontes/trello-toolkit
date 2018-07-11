@@ -36,7 +36,6 @@ const List = (spec, my) => {
         references.components.header = bindHeaderReference();
         references.components.cards = bindCardsReference();
         references.components.counter = bindCardCounterReference();
-
     }
 
     function bindHeaderReference() {
@@ -61,7 +60,7 @@ const List = (spec, my) => {
     }
 
 
-    return that;
+    return Object.freeze(that);
 }
 
 module.exports = {

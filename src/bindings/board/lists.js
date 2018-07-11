@@ -34,7 +34,7 @@ const Lists = (spec, my) => {
     function bindListsReference() {
         return iterable({ collection: getListsCollection() })
             .map(list => { return List({ list: list }, my) })
-            .get();
+            .collect();
     }
 
     function getListsCollection() {

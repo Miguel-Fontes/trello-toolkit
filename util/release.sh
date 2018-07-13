@@ -10,6 +10,8 @@
 #            - Validates inputs, showing a descriptive message if needed
 #            - Creates a tar.gz of the release, containing the files built on dist directory
 #
+# Version 2: - Releases directly to a GitHub release, created by this script
+#
 # Depends On:
 #   - npm
 #   - semver

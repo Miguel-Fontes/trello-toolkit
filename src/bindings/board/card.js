@@ -4,7 +4,7 @@ const Card = (spec, my) => {
 
     init()
 
-    that.getTitle = () => references.title;
+    that.getTitle = () => "";
 
     function init() {
         setDocument();

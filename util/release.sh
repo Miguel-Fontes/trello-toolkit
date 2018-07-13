@@ -20,6 +20,7 @@
 #
 # Environment Configuration
 #   - CHROME_EXTENSIONS_PEM: path to .pem file, used on crx generation
+#   - GITHUB_OAUTH_TOKEN: a GITHUB oauth token, with access to create releases
 #
 # Future Features
 #   - Validate if version is bigger than current one
@@ -41,6 +42,7 @@ declare -r USAGE="
 "
 
 declare -r PEM_FILE="$CHROME_EXTENSIONS_PEM"
+declare -r TOKEN="$GITHUB_OAUTH_TOKEN"
 declare -r RELEASE_TYPE=$1
 declare -r CURRENT_VERSION=$(grep -E version package.json | cut -d':' -f 2 | sed -e "s/ //g" -e "s/\"//g" -e "s/,//g")
 declare    NEXT_VERSION
@@ -58,10 +60,14 @@ declare -r DEFAULT='\033[0;0m'
 validate() {
     errors="$FALSE";
 
+    if [ -z "$TOKEN" ]; then
+        echo -e "${RED}ERROR: TOKEN is not set! Configure a environment variable named GITHUB_OAUTH_TOKEN containing a GitHub token with access to create releases!"
+        errors="$TRUE"
+    fi
+
     if [ -z "$PEM_FILE" ]; then
         echo -e "${RED}ERROR: PEM file is not set! Configure a environment variable named CHROME_EXTENSIONS_PEM containing the file path!"
         errors="$TRUE"
-
     fi
 
     if [ -z "$RELEASE_TYPE" ]; then
@@ -104,6 +110,18 @@ packExtension() {
     tar -cf dist/trello-toolkit.tar.gz -C dist trello-toolkit.crx
 }
 
+releaseToGithub() {
+    curl -X POST \
+      "https://api.github.com/repos/Miguel-Fontes/trello-toolkit/releases?access_token=$TOKEN" \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/json' \
+      -d "{
+      \"tag_name\": \"$NEXT_VERSION\",
+      \"target_commitish\": \"master\",
+      \"name\": \"Version $NEXT_VERSION\"
+    }"
+}
+
 main () {
     echo "Trello Toolkit Release Script"
     echo "Current working directory is $(pwd)"
@@ -116,6 +134,7 @@ main () {
     npmRelease
     npmBuild
     packExtension
+    releaseToGithub
 }
 
 main

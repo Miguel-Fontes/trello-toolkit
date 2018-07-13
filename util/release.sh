@@ -34,6 +34,7 @@ declare -r USAGE="
            release major
 "
 
+declare -r PEM_FILE="$CHROME_EXTENSIONS_PEM"
 declare -r RELEASE_TYPE=$1
 declare -r CURRENT_VERSION=$(grep -E version package.json | cut -d':' -f 2 | sed -e "s/ //g" -e "s/\"//g" -e "s/,//g")
 declare    NEXT_VERSION
@@ -48,18 +49,14 @@ declare -r FALSE=1
 declare -r RED='\033[0;31m'
 declare -r DEFAULT='\033[0;0m'
 
-getNextVersion() {
-    NEXT_VERSION=$(node_modules/semver/bin/semver -i $RELEASE_TYPE $CURRENT_VERSION)
-}
-
-bumpManifestVersion () {
-    sed -i -- "s/$CURRENT_VERSION/$NEXT_VERSION/g" src/manifest.json
-    git stage src/manifest.json
-    git commit -m "Bump manifest version to $NEXT_VERSION"
-}
-
 validate() {
     errors="$FALSE";
+
+    if [ -z "$PEM_FILE" ]; then
+        echo -e "${RED}ERROR: PEM file is not set! Configure a environment variable named CHROME_EXTENSIONS_PEM containing the file path!"
+        errors="$TRUE"
+
+    fi
 
     if [ -z "$RELEASE_TYPE" ]; then
         echo -e "${RED}ERROR: Release Type was not informed!"
@@ -77,12 +74,28 @@ validate() {
     fi
 }
 
+getNextVersion() {
+    NEXT_VERSION=$(node_modules/semver/bin/semver -i $RELEASE_TYPE $CURRENT_VERSION)
+}
+
+bumpManifestVersion () {
+    sed -i -- "s/$CURRENT_VERSION/$NEXT_VERSION/g" src/manifest.json
+    git stage src/manifest.json
+    git commit -m "Bump manifest version to $NEXT_VERSION"
+}
+
 npmRelease () {
     npm version $RELEASE_TYPE
 }
 
 npmBuild () {
     npm run build
+}
+
+packExtension() {
+    google-chrome --pack-extension=dist --pack-extension-key="$PEM_FILE"
+    mv dist.crx dist/trello-toolkit.crx
+    tar -cf dist/trello-toolkit.tar.gz -C dist trello-toolkit.crx
 }
 
 main () {
@@ -96,6 +109,7 @@ main () {
     bumpManifestVersion
     npmRelease
     npmBuild
+    packExtension
 }
 
 main

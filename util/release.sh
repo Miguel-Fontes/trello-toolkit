@@ -26,8 +26,8 @@
 #   - GITHUB_OAUTH_TOKEN: a GITHUB oauth token, with access to create releases
 #
 # Future Features
-#   - Validate if version is bigger than current one
-#   - Push release artifact to github releases
+#   - Send release description to github, obtaining it from the CHANGELOG
+#   - Generalize script, extracting reusable concepts when adequate
 #
 # Future Improvements
 #   - Validate if semver is installed
@@ -143,7 +143,11 @@ main () {
     npmRelease
     npmBuild
     packExtension
+
+    echo "Releasing new version to GitHub..."
     releaseToGithub
+
+    echo "Release done!"
 }
 
 main

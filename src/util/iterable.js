@@ -1,13 +1,18 @@
 const optional = require('./optional').default;
+const toArray = require('./arrays').default.toArray;
 
 const Iterable = (spec, my) => {
-    let that = {}, collection;
+    let that = {}, collection = [];
     my = my || {}
 
     init();
 
     function init() {
-        collection = spec.collection || [];
+        let collections = spec.collections || [];
+
+        collection = collections.reduce(
+            (xs, ys) => xs.concat(toArray(ys)),
+            toArray(spec.collection || []))
     }
 
     // forEach :: (a -> _) -> ()

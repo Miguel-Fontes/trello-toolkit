@@ -74,17 +74,17 @@ const List = (spec, my) => {
     function subscribeCardListObserver() {
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                iterable({ collection: mutation.addedNodes })
+                iterable({ collections: [mutation.addedNodes, mutation.removedNodes] })
                     .filter(node => isACard(node))
                     .findFirst()
                     .ifPresent(node => updateCounterValue());
             });
         });
-        observer.observe(references.components.cards, { childList: true });
+        observer.observe(references.components.cards, { childList: true, subtree: true });
     }
 
     function isACard(node) {
-        return node.attributes['class'].nodeValue.includes('list-card');
+        return node.attributes['class'] && node.attributes['class'].nodeValue.includes('list-card');
     }
 
     function updateCounterValue() {

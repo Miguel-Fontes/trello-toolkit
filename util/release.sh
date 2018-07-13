@@ -14,6 +14,12 @@
 #   - npm
 #   - semver
 #   - git
+#   - google-chrome
+#   - curl
+#   - tar
+#
+# Environment Configuration
+#   - CHROME_EXTENSIONS_PEM: path to .pem file, used on crx generation
 #
 # Future Features
 #   - Validate if version is bigger than current one

@@ -17,6 +17,7 @@
 #   - google-chrome
 #   - curl
 #   - tar
+#   - jq
 #
 # Environment Configuration
 #   - CHROME_EXTENSIONS_PEM: path to .pem file, used on crx generation
@@ -33,7 +34,7 @@
 # Miguel Fontes, 2018-07
 
 declare -r USAGE="
-    $(basename $0)
+    $(basename "$0")
 
     USAGE: release (patch | minor | major)
            release patch
@@ -46,6 +47,7 @@ declare -r TOKEN="$GITHUB_OAUTH_TOKEN"
 declare -r RELEASE_TYPE=$1
 declare -r CURRENT_VERSION=$(grep -E version package.json | cut -d':' -f 2 | sed -e "s/ //g" -e "s/\"//g" -e "s/,//g")
 declare    NEXT_VERSION
+declare    GITHUB_RELEASE_ID
 
 declare -r TYPE_MAJOR="major"
 declare -r TYPE_MINOR="minor"
@@ -97,7 +99,7 @@ bumpManifestVersion () {
 }
 
 npmRelease () {
-    npm version $RELEASE_TYPE
+    npm version "$RELEASE_TYPE"
 }
 
 npmBuild () {
@@ -111,7 +113,7 @@ packExtension() {
 }
 
 releaseToGithub() {
-    curl -X POST \
+    GITHUB_RELEASE_ID=$(curl -X POST \
       "https://api.github.com/repos/Miguel-Fontes/trello-toolkit/releases?access_token=$TOKEN" \
       -H 'cache-control: no-cache' \
       -H 'content-type: application/json' \
@@ -119,7 +121,12 @@ releaseToGithub() {
       \"tag_name\": \"$NEXT_VERSION\",
       \"target_commitish\": \"master\",
       \"name\": \"Version $NEXT_VERSION\"
-    }"
+    }" | jq .id)
+
+    curl --data-binary @"dist/trello-toolkit.tar.gz" \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/octet-stream' \
+      "https://uploads.github.com/repos/Miguel-Fontes/trello-toolkit/releases/$GITHUB_RELEASE_ID/assets?access_token=$TOKEN&name=trello-toolkit.tar.gz"
 }
 
 main () {
@@ -138,8 +145,3 @@ main () {
 }
 
 main
-
-
-
-
-

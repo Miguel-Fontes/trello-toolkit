@@ -13,6 +13,7 @@ const List = (spec, my) => {
 
     function init() {
         setDocument();
+        setMutationObserver();
         setConstants();
         setReferences();
         dataBindMutations()
@@ -28,6 +29,11 @@ const List = (spec, my) => {
     function setDocument() {
         my.document = my.document || spec.document;
         if (my.document == undefined) throw new Error("Document not supplied!")
+    }
+
+    function setMutationObserver() {
+        my.mutationObserver = my.mutationObserver || spec.mutationObserver;
+        if (my.mutationObserver == undefined) throw new Error("Mutation Observer not supplied!")
     }
 
     function setConstants() {
@@ -72,7 +78,7 @@ const List = (spec, my) => {
     }
 
     function subscribeCardListObserver() {
-        var observer = new MutationObserver(function (mutations) {
+        var observer = new my.mutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 iterable({ collections: [mutation.addedNodes, mutation.removedNodes] })
                     .filter(node => isACard(node))

@@ -11,6 +11,7 @@ const Lists = (spec, my) => {
 
     function init() {
         setDocument();
+        setMutationObserver();
         setConstants();
         setReferences();
     }
@@ -18,6 +19,11 @@ const Lists = (spec, my) => {
     function setDocument() {
         my.document = my.document || spec.document;
         if (my.document == undefined) throw new Error("Document not supplied!")
+    }
+
+    function setMutationObserver() {
+        my.mutationObserver = my.mutationObserver || spec.mutationObserver;
+        if (my.mutationObserver == undefined) throw new Error("Mutation Observer not supplied!")
     }
 
     function setConstants() {

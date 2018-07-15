@@ -125,7 +125,7 @@ releaseToGithub() {
       \"name\": \"Version $NEXT_VERSION\"
     }" | jq .id)
 
-    curl --data-binary @"dist/trello-toolkit.tar.gz" \
+    curl -s --data-binary @"dist/trello-toolkit.tar.gz" \
       -H 'cache-control: no-cache' \
       -H 'content-type: application/octet-stream' \
       "https://uploads.github.com/repos/Miguel-Fontes/trello-toolkit/releases/$GITHUB_RELEASE_ID/assets?access_token=$TOKEN&name=trello-toolkit.tar.gz"

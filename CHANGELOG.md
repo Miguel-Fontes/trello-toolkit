@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+### Fixed
+
+- Hide release creation curl output on CLI.
+
 ## [v1.1.3] - 2018-07-15
 
 ### Changed

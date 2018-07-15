@@ -23,7 +23,7 @@ So, you want to install this tool on your browser? Nice!
 
 First things first. Aren't you tired of turning filter up just to check the number of cards on each list? I am! So, with `trello-toolkit` the card count is always visible.
 
-![Card Counter](https://user-images.githubusercontent.com/15656072/42411561-5a2e6158-81d4-11e8-97c9-95b5afb84459.png)
+![Card Counter](https://user-images.githubusercontent.com/15656072/42738198-01fd7d9c-8856-11e8-9ad8-8f06351e93be.png)
 
 ## Contributing
 

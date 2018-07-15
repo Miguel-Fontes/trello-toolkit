@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [v1.2.1] - 2018-07-15
+
+### Changed
+
+- Release script now shows the created release URL
+
+### Fixed
+
+- Release doesn't print Github response, when uploading the artifact
+
 ## [v1.2.0] - 2018-07-15
 
 ### Added
@@ -64,7 +76,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - Card Counter feature, showing the number of cards on each Trello List Header.
 
-[Unreleased]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.1...HEAD
+[v1.2.1]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.3...v1.2.0
 [v1.1.3]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.1...v1.1.2

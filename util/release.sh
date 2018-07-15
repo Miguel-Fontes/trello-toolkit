@@ -115,7 +115,7 @@ packExtension() {
 }
 
 releaseToGithub() {
-    GITHUB_RELEASE=$(curl -X POST \
+    GITHUB_RELEASE=curl -X POST \
       "https://api.github.com/repos/Miguel-Fontes/trello-toolkit/releases?access_token=$TOKEN" \
       -H 'cache-control: no-cache' \
       -H 'content-type: application/json' \
@@ -123,7 +123,7 @@ releaseToGithub() {
       \"tag_name\": \"$NEXT_VERSION\",
       \"target_commitish\": \"master\",
       \"name\": \"Version $NEXT_VERSION\"
-    }")
+    }"
 
     GITHUB_RELEASE_ID=$(echo GITHUB_RELEASE | jq .id)
     GITHUB_RELEASE_URL=$(echo GITHUB_RELEASE | jq .url)

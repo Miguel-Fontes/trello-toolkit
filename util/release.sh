@@ -126,7 +126,7 @@ releaseToGithub() {
     }")
 
     GITHUB_RELEASE_ID=$(echo $GITHUB_RELEASE | jq .id)
-    GITHUB_RELEASE_URL=$(echo $GITHUB_RELEASE | jq .url)
+    GITHUB_RELEASE_URL=$(echo $GITHUB_RELEASE | jq .html_url)
 
     ARTIFACT_URL=$(curl -s --data-binary @"dist/trello-toolkit.tar.gz" \
       -H 'cache-control: no-cache' \

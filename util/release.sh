@@ -123,17 +123,17 @@ releaseToGithub() {
       \"tag_name\": \"$NEXT_VERSION\",
       \"target_commitish\": \"master\",
       \"name\": \"Version $NEXT_VERSION\"
-    }" | jq .id)
+    }")
 
     GITHUB_RELEASE_ID=$(echo GITHUB_RELEASE | jq .id)
     GITHUB_RELEASE_URL=$(echo GITHUB_RELEASE | jq .url)
 
-    ARTIFACT_URL=curl -s --data-binary @"dist/trello-toolkit.tar.gz" \
+    ARTIFACT_URL=$(curl -s --data-binary @"dist/trello-toolkit.tar.gz" \
       -H 'cache-control: no-cache' \
       -H 'content-type: application/octet-stream' \
-      "https://uploads.github.com/repos/Miguel-Fontes/trello-toolkit/releases/$GITHUB_RELEASE_ID/assets?access_token=$TOKEN&name=trello-toolkit.tar.gz" | jq .url
+      "https://uploads.github.com/repos/Miguel-Fontes/trello-toolkit/releases/$GITHUB_RELEASE_ID/assets?access_token=$TOKEN&name=trello-toolkit.tar.gz" | jq .url)
 
-    echo "Artifact successfully uploaded to GitHub! Check the release at $GITHUB_RELEASE_URL"
+    echo "Artifact successfully uploaded to GitHub! Check the release at $GITHUB_RELEASE_URL, or download directly from $ARTIFACT_URL"
 }
 
 main () {

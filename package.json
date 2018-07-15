@@ -1,6 +1,6 @@
 {
   "name": "trello-toolkit",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A chrome extension adding some much needed features to support card management features on trello",
   "main": "index.js",
   "scripts": {

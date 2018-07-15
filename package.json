@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover jasmine -x **/*.spec.js",
-    "build": "webpack --mode=production",
-    "build-dev": "webpack --mode=development",
+    "test:watch": "nodemon --exec npm test",
+    "build": "npm test && webpack --mode=production",
+    "build-dev": "npm test && webpack --mode=development",
     "release": "util/release.sh"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "jasmine": "^3.1.0",
     "jasmine-console-reporter": "^3.0.2",
     "jsdom": "^11.11.0",
+    "nodemon": "^1.18.2",
     "semver": "^5.5.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"

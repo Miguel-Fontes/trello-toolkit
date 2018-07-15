@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
-## [v1.2.1] - 2018-07-15
+## [v1.2.4] - 2018-07-15
 
 ### Changed
 
@@ -76,8 +76,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - Card Counter feature, showing the number of cards on each Trello List Header.
 
-[Unreleased]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.1...HEAD
-[v1.2.1]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.0...v1.2.1
+[Unreleased]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.4...HEAD
+[v1.2.4]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.2.0...v1.2.4
 [v1.2.0]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.3...v1.2.0
 [v1.1.3]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/Miguel-Fontes/trello-toolkit/compare/v1.1.1...v1.1.2

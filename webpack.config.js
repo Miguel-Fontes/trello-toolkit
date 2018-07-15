@@ -10,8 +10,9 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: "src/manifest.json" }
+            { from: "src/manifest.json" },
+            { from: "assets/css/style.css" }
         ]),
         new CleanWebpackPlugin(["dist"])
-    ],
+    ]
 };

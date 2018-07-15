@@ -67,6 +67,7 @@ const List = (spec, my) => {
     function bindCardCounterReference() {
         let numberOfCards = references.components.cards.childElementCount;
         let counterNode = my.document.createElement("p");
+        counterNode.setAttribute('class', 'ttk-card-counter');
         counterNode.appendChild(my.document.createTextNode(numberOfCards));
         references.components.header.appendChild(counterNode);
 
@@ -90,7 +91,7 @@ const List = (spec, my) => {
     }
 
     function isACard(node) {
-        return node.attributes['class'] && node.attributes['class'].nodeValue.includes('list-card');
+        return node.getAttribute('class').includes('list-card');
     }
 
     function updateCounterValue() {

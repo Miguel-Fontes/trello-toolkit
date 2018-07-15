@@ -22,16 +22,24 @@ describe("List", () => {
 
     describe("on valid state", () => {
         let mockConstants = { list: { LIST_CLASS: "a-class" } }
+        let mockCard = () => mocks.dom.node({class: "list-card"});
+        let mockCards = mocks.dom.node({childNodes: [mockCard(), mockCard()]});
+        let mockHeader = mocks.dom.node();
+        let mockListName = mocks.dom.node();
 
-        let mockCard = mocks.dom.node;
-        mockCard.attributes = {
-            class: {
-                nodeValue: "list-card"
+        let mockListOfCards = mocks.dom.node();
+        mockListOfCards.querySelector = type => {
+            switch (type) {
+                case ".js-list-header":
+                    return mockHeader;
+                case ".js-list-name-assist":
+                    return mockListName
+                case ".js-list-cards":
+                    return mockCards
+                default:
+                    break;
             }
         }
-
-        let mockListOfCards = mocks.dom.node;
-        mockListOfCards.childNodes = [mockCard, mockCard]
 
         let list = List({
             document: mocks.dom.document,
@@ -61,25 +69,27 @@ describe("List", () => {
         });
 
         it('should return the number of cards', () => {
-            expect(list.getNumberOfCards()).toEqual(mockListOfCards.childNodes.length);
+            expect(list.getNumberOfCards()).toEqual(mockCards.childNodes.length);
         });
 
         it('should update counter when a new card is added', () => {
-            let mutation = mocks.dom.mutation({ addedNodes: [mocks.dom.node] });
+            let addedNode = mockCard()
+            let mutation = mocks.dom.mutation({ addedNodes: [addedNode] });
 
-            mockListOfCards.childNodes.push(mocks.dom.node);
+            mockCards.childNodes.push(addedNode);
             mocks.dom.mutationObserverInstance.mutate([mutation]);
 
-            expect(list.getNumberOfCards()).toEqual(mockListOfCards.childNodes.length);
+            expect(list.getNumberOfCards()).toEqual(mockCards.childNodes.length);
         })
 
         it('should update counter when a new card is removed', () => {
-            let mutation = mocks.dom.mutation({ removedNodes: [mocks.dom.node] });
+            let removedNode = mockCard()
+            let mutation = mocks.dom.mutation({ removedNodes: [removedNode] });
 
-            mockListOfCards.childNodes.push(mocks.dom.node);
+            mockCards.childNodes.push(removedNode);
             mocks.dom.mutationObserverInstance.mutate([mutation]);
 
-            expect(list.getNumberOfCards()).toEqual(mockListOfCards.childNodes.length);
+            expect(list.getNumberOfCards()).toEqual(mockCards.childNodes.length);
         })
     })
 })

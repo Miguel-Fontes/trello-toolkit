@@ -7,7 +7,8 @@
     "content_scripts": [
       {
         "matches": ["https://trello.com/b/*"],
-        "js": ["trello-toolkit.js"]
+        "js": ["trello-toolkit.js"],
+        "css": ["style.css"]
       }
     ]
   }

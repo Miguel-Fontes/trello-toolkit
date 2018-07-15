@@ -8,20 +8,26 @@ util.id = x => x
 // DOM
 mocks.dom = {};
 
-mocks.dom.node = {
-    appendChild: node => { },
-    querySelector: query => mocks.dom.node,
-    attributes: {
-        class: 'a-class'
+mocks.dom.node = nodeBuilder
+
+function nodeBuilder(spec) {
+    spec = spec || {};
+
+    return {
+        appendChild: node => { },
+        querySelector: query => nodeBuilder(),
+        childNodes: spec.childNodes || [],
+        setAttribute: () => { },
+        getAttribute: () => spec.class + 'a class'
     }
 }
 
-mocks.dom.listOfNodes = [mocks.dom.node, mocks.dom.node];
+mocks.dom.listOfNodes = [nodeBuilder(), nodeBuilder()];
 
 mocks.dom.document = {
     getElementsByClassName: name => mocks.dom.listOfNodes,
-    createTextNode: type => mocks.dom.node,
-    createElement: node => mocks.dom.node
+    createTextNode: type => nodeBuilder(),
+    createElement: node => nodeBuilder()
 }
 
 mocks.dom.mutationObserver = function (observer) {
@@ -50,11 +56,11 @@ mocks.dom.mutation = function (spec, my) {
 
     function init() {
         that.type = spec.type || "";
-        that.target = spec.target || mocks.dom.node;
-        that.addedNodes = spec.addedNodes || [mocks.dom.node];
-        that.removedNodes = spec.removedNodes || [mocks.dom.node];
-        that.previousSibling = spec.previousSibling || mocks.dom.node;
-        that.nextSibling = spec.nextSibling || mocks.dom.node;
+        that.target = spec.target || nodeBuilder();
+        that.addedNodes = spec.addedNodes || [nodeBuilder()];
+        that.removedNodes = spec.removedNodes || [nodeBuilder()];
+        that.previousSibling = spec.previousSibling || nodeBuilder();
+        that.nextSibling = spec.nextSibling || nodeBuilder();
         that.attributeName = spec.attributeName || "";
         that.attributeNamespace = spec.attributeNamespace || "";
         that.oldValue = spec.oldValue || "";

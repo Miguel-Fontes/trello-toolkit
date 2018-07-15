@@ -3,7 +3,8 @@ const Lists = require('./bindings/board/lists').builder;
 
 let config = {
     constants: constants,
-    document: document
+    document: document,
+    mutationObserver: MutationObserver
 };
 
 let dom = {

@@ -42,8 +42,6 @@ mocks.dom.mutationObserver = function (observer) {
     return that;
 };
 
-
-
 mocks.dom.mutation = function (spec, my) {
     let that = {};
     my = my || {}

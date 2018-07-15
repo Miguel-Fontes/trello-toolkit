@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+### Changed
+
+- Extracted dom dependencies from application objects, making testing and general development life easier.
+
 ## [v1.1.2] - 2018-07-13
 
 ### Added

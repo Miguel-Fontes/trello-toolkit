@@ -1,7 +1,13 @@
 .ttk-card-counter {
-  background-color: grey;
+   background-color: grey;
   color: white;
   font-family: Roboto;
   padding: 0.01em 0.9em;
   border-radius: 100px;
+  display: inline-block;
+}
+
+.js-list-name-input {
+  width: 80%;
+  display: inline-block;
 }

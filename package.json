@@ -4,7 +4,7 @@
   "description": "A chrome extension adding some much needed features to support card management features on trello",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover -x **/spec/** jasmine",
+    "test": "jest",
     "test:watch": "nodemon --exec npm test",
     "build": "npm test && webpack --mode=production",
     "build-dev": "npm test && webpack --mode=development",
@@ -24,8 +24,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.1.0",
-    "jasmine-console-reporter": "^3.0.2",
+    "jest": "^23.4.1",
     "jsdom": "^11.11.0",
     "nodemon": "^1.18.2",
     "semver": "^5.5.0",
